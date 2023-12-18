@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dbmigrate": "npx prisma migrate dev --name dev",
+    "dbstudio": "npx prisma studio",
+    "dbpush": "npx prisma db push"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
