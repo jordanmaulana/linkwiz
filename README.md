@@ -9,7 +9,7 @@ git clone git@github.com:jordanmaulana/devwiz-hitungduit.git
 ```
 
 ```bash
-cd digicommerce-batch3
+cd devwiz-hitungduit
 ```
 
 ```bash
