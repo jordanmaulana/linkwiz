@@ -1,5 +1,4 @@
-# Project Hitung Duit
-
+# Project LinkWiz
 ## How to use
 
 Please follow the steps below to run the project.
