@@ -1,5 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import React from "react";
 import { MoreHorizontal } from "lucide-react";
 import {
@@ -8,13 +11,35 @@ import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
 } from "@nextui-org/react";
 import { extractInitials } from "@/lib/string_library";
+import { apiUrl } from "@/config/apiUrl";
 
 export const AgentCard = ({ id, name, phone, isActive, linkId }) => {
-  console.log(isActive);
+  const router = useRouter();
+
+  const [available, setAvailable] = useState(isActive);
+
+  async function handleUpdate(value) {
+    setAvailable(value);
+    await fetch(`${apiUrl}/agents/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ isActive: value }),
+    });
+    router.refresh();
+  }
+
+  async function handleDelete() {
+    await fetch(`${apiUrl}/agents/${id}`, {
+      method: "DELETE",
+    });
+    router.refresh();
+  }
+
   return (
     <div className="flex gap-4 m-4 shadow-md rounded-lg p-4 bg-white">
       <Avatar
@@ -33,15 +58,24 @@ export const AgentCard = ({ id, name, phone, isActive, linkId }) => {
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions">
             <DropdownItem key="edit">Edit</DropdownItem>
-            <DropdownItem key="delete" className="text-danger" color="danger">
+            <DropdownItem
+              key="delete"
+              className="text-danger"
+              color="danger"
+              onClick={() => {
+                const result = confirm("Delete this agent?");
+                if (result) handleDelete();
+              }}
+            >
               Delete
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
         <Switch
-          isSelected={isActive}
+          isSelected={available}
           aria-label="Automatic updates"
-          className=" mt-4"
+          className="mt-4"
+          onValueChange={handleUpdate}
         />
       </div>
     </div>

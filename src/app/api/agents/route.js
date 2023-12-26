@@ -8,7 +8,11 @@ export async function GET(request) {
     ///TODO: implement user id by token
     // const userId = GetUserId(token);
 
-    const agents = await prisma.agents.findMany();
+    const agents = await prisma.agents.findMany({
+      orderBy: {
+        name: "asc",
+      },
+    });
     return NextResponse.json(
       {
         data: agents,

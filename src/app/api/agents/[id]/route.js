@@ -3,13 +3,13 @@ import { prisma } from "@/utils/prisma";
 
 export async function PATCH(request, { params }) {
   try {
-    const { name, phone, linkId } = await request.json();
+    const { name, phone, isActive, linkId } = await request.json();
 
     const agents = await prisma.agents.update({
       where: {
         id: params.id,
       },
-      data: { name, phone, linkId },
+      data: { name, phone, isActive, linkId },
     });
     return NextResponse.json(
       {
