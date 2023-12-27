@@ -28,3 +28,11 @@ model Agents {
   linkId   String
   userId   String
 }
+
+model Links {
+  id      String @id @default(uuid())
+  name    String
+  url     String
+  is_active Boolean @default(true)
+  user_id String
+}
