@@ -15,7 +15,13 @@ cd linkwiz
 npm install
 ```
 
+
+```
+⚠️⚠️⚠️
 rename .env.example into .env and fill the credentials from your own Neon DB
+⚠️⚠️⚠️
+```
+
 
 ```bash
 npm run dev
