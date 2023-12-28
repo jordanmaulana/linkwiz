@@ -1,15 +1,14 @@
-# Project Hitung Duit
-
+# Project LinkWiz
 ## How to use
 
 Please follow the steps below to run the project.
 
 ```bash
-git clone git@github.com:jordanmaulana/devwiz-hitungduit.git
+git clone git@github.com:jordanmaulana/linkwiz.git
 ```
 
 ```bash
-cd devwiz-hitungduit
+cd linkwiz
 ```
 
 ```bash
