@@ -1,13 +1,10 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/utils/prisma";
-import { GetUserId } from "@/lib/token_library";
 
 export async function GET(request, { params }) {
   const token = request.cookies.get("token")?.value;
 
   try {
-    const userId = GetUserId(token);
-
     const result = await prisma.links.findUnique({
       where: {
         id: params.id,
@@ -39,7 +36,7 @@ export async function PATCH(request, { params }) {
   try {
     const { name, slug, isActive } = await request.json();
 
-    const agents = await prisma.links.update({
+    const links = await prisma.links.update({
       where: {
         id: params.id,
       },
@@ -47,7 +44,7 @@ export async function PATCH(request, { params }) {
     });
     return NextResponse.json(
       {
-        data: agents,
+        data: links,
         message: "Link updated successfully",
       },
       { status: 200 }
@@ -57,6 +54,32 @@ export async function PATCH(request, { params }) {
     return NextResponse.json(
       {
         error: "Error updating link",
+        log: `${error}`,
+      },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request, { params }) {
+  try {
+    const links = await prisma.links.delete({
+      where: {
+        id: params.id,
+      },
+    });
+    return NextResponse.json(
+      {
+        data: links,
+        message: "Link deleted successfully",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      {
+        error: "Error deleting link",
         log: `${error}`,
       },
       { status: 500 }
