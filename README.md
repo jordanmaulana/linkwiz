@@ -1,4 +1,5 @@
 # Project LinkWiz
+
 ## How to use
 
 Please follow the steps below to run the project.
@@ -15,13 +16,11 @@ cd linkwiz
 npm install
 ```
 
-
 ```
 ⚠️⚠️⚠️
-rename .env.example into .env and fill the credentials from your own Neon DB
+copy paste .env.example & rename into .env and fill the credentials from your own Neon DB
 ⚠️⚠️⚠️
 ```
-
 
 ```bash
 npm run dev

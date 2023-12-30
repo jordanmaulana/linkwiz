@@ -6,7 +6,6 @@ export async function GET(request) {
   const token = request.cookies.get("token")?.value;
 
   try {
-    ///TODO: implement user id by token
     const userId = GetUserId(token);
 
     const agents = await prisma.agents.findMany({

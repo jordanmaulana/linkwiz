@@ -15,6 +15,9 @@ export async function GET(request) {
       orderBy: {
         id: "asc",
       },
+      include: {
+        Agents: true,
+      },
     });
     return NextResponse.json(
       {
