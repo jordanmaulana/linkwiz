@@ -1,14 +1,18 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/utils/prisma";
+import { GetUserId } from "@/lib/token_library";
 
 export async function GET(request) {
-  //   const token = request.cookies.get("token")?.value;
+  const token = request.cookies.get("token")?.value;
 
   try {
     ///TODO: implement user id by token
-    // const userId = GetUserId(token);
+    const userId = GetUserId(token);
 
     const agents = await prisma.agents.findMany({
+      where: {
+        userId: userId,
+      },
       orderBy: {
         name: "asc",
       },
@@ -33,13 +37,11 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  //   const token = request.cookies.get("token")?.value;
+  const token = request.cookies.get("token")?.value;
 
   try {
-    // const userId = GetUserId(token);
-
-    ///TODO: implement user id by token
-    const { name, phone, linkId, userId } = await request.json();
+    const userId = GetUserId(token);
+    const { name, phone, linkId } = await request.json();
 
     const agent = await prisma.agents.create({
       data: {
@@ -53,7 +55,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         data: agent,
-        message: "Agents created successfully",
+        message: "Agent created successfully",
       },
       { status: 201 }
     );
