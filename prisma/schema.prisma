@@ -14,10 +14,22 @@ datasource db {
 model Users {
   id        String   @id @default(uuid())
   name      String
-  phone     String   @unique
-  pin       String
+  password  String
+  email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Links     Links[]
+  Agents    Agents[]
+}
+
+model Links {
+  id       String   @id @default(uuid())
+  name     String
+  slug     String   @unique
+  isActive Boolean  @default(true)
+  userId   String
+  Agents   Agents[]
+  user     Users    @relation(fields: [userId], references: [id])
 }
 
 model Agents {
@@ -27,4 +39,6 @@ model Agents {
   isActive Boolean @default(true)
   linkId   String
   userId   String
+  link     Links   @relation(fields: [linkId], references: [id])
+  user     Users   @relation(fields: [userId], references: [id])
 }
