@@ -1,10 +1,10 @@
-### Register User
+### Create Link
 
 POST http://localhost:3000/api/users/register
 
 {
-    "name" : "Bintang",
-    "email":"bintangjos@gmail.com",
+    "name" : "Jordan",
+    "email":"jordan@gmail.com",
     "password": "admin123"
 }
 
