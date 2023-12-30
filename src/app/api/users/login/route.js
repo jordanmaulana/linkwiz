@@ -16,7 +16,10 @@ export async function POST(req) {
 
     // Jika user belum verifikasi, kirim pesan error
     if (findUser.verified === false) {
-      return NextResponse.json({ errorMessage: "Please verify your account first" }, { status: 401 });
+      return NextResponse.json(
+        { errorMessage: "Please verify your account first" },
+        { status: 401 }
+      );
     }
 
     // Jika user tidak ditemukan, kirim pesan error
@@ -49,6 +52,9 @@ export async function POST(req) {
     return res;
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ errorMessage: "Something went wrong. Please try again later" }, { status: 500 });
+    return NextResponse.json(
+      { errorMessage: "Something went wrong. Please try again later" },
+      { status: 500 }
+    );
   }
 }

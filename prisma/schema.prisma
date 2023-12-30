@@ -5,6 +5,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// prisma/schema.prisma
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
@@ -13,9 +14,9 @@ datasource db {
 
 model Users {
   id        String   @id @default(uuid())
-  name      String
-  phone     String   @unique
-  pin       String
+  full_name String
+  email     String
+  password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
