@@ -1,21 +1,24 @@
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/utils/prisma";
+import { GetUserId } from "@/lib/token_library";
 
 export async function GET(request) {
-  //   const token = request.cookies.get("token")?.value;
+  const token = request.cookies.get("token")?.value;
 
   try {
-    ///TODO: implement user id by token
-    // const userId = GetUserId(token);
+    const userId = GetUserId(token);
 
-    const links = await prisma.links.findMany({
+    const result = await prisma.links.findMany({
+      where: {
+        userId: userId,
+      },
       orderBy: {
         id: "asc",
       },
     });
     return NextResponse.json(
       {
-        data: agents,
+        data: result,
         message: "All links fetched successfully",
       },
       { status: 200 }
@@ -33,27 +36,24 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  //   const token = request.cookies.get("token")?.value;
+  const token = request.cookies.get("token")?.value;
 
   try {
-    // const userId = GetUserId(token);
+    const userId = GetUserId(token);
+    const { name, slug } = await request.json();
 
-    ///TODO: implement user id by token
-    const { name, phone, linkId, userId } = await request.json();
-
-    const agent = await prisma.agents.create({
+    const result = await prisma.links.create({
       data: {
         name,
-        phone,
-        linkId,
+        slug,
         userId,
       },
     });
 
     return NextResponse.json(
       {
-        data: agent,
-        message: "Agents created successfully",
+        data: result,
+        message: "link created successfully",
       },
       { status: 201 }
     );
@@ -61,7 +61,7 @@ export async function POST(request) {
     console.error(error);
     return NextResponse.json(
       {
-        error: "Error creating agents",
+        error: "Error creating link",
         log: `${error}`,
       },
       { status: 500 }

@@ -1,0 +1,13 @@
+### Create link
+
+POST http://localhost:3000/api/links
+
+{
+    "name" : "ProductX",
+    "slug":"product-x"
+}
+
+### Get user's links
+
+GET http://localhost:3000/api/links
+
