@@ -1,0 +1,19 @@
+### Register User
+
+POST http://localhost:3000/api/users/register
+
+{
+    "name" : "Bintang",
+    "email":"bintangjos@gmail.com",
+    "password": "admin123"
+}
+
+### Login User
+
+POST http://localhost:3000/api/users/login
+
+{
+    "email":"bintangjos@gmail.com",
+    "password": "admin123"
+}
+
