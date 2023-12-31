@@ -1,0 +1,14 @@
+### Create agent
+
+POST http://localhost:3000/api/agents
+
+{
+    "name" : "Tasya",
+    "phone":"+6285765452341",
+    "linkId":"399a366c-337b-4e67-8145-ceb2fc80d845"
+}
+
+### Get user agents
+
+GET http://localhost:3000/api/agents
+

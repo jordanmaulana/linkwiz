@@ -1,0 +1,30 @@
+### Create link
+
+POST http://localhost:3000/api/links
+
+{
+    "name" : "ProductX",
+    "slug":"product-x"
+}
+
+### Get user's links
+
+GET http://localhost:3000/api/links
+
+
+### Get single links
+
+GET http://localhost:3000/api/links/399a366c-337b-4e67-8145-ceb2fc80d845
+
+### Update link
+
+PATCH http://localhost:3000/api/links/399a366c-337b-4e67-8145-ceb2fc80d845
+
+{
+    "isActive" : false
+}
+
+
+### Delete link
+
+DELETE http://localhost:3000/api/links/c7281605-f65f-4c24-abb6-2a6ed8b2eabb

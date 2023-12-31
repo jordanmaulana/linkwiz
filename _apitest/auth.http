@@ -1,15 +1,19 @@
-### Registering User
+### Create Link
+
 POST http://localhost:3000/api/users/register
 
 {
-    "full_name": "Ali Anwar",
-    "email": "ali@anw.com",
-    "password": "123456"
+    "name" : "Jordan",
+    "email":"jordan@gmail.com",
+    "password": "admin123"
 }
-### Login
+
+### Login User
+
 POST http://localhost:3000/api/users/login
 
 {
-    "email": "ali@anw.com",
-    "password": "112233"
+    "email":"bintangjos@gmail.com",
+    "password": "admin123"
 }
+
