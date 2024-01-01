@@ -40,7 +40,7 @@ export async function POST(req) {
     // Buat token
     const token = sign(payload, process.env.SECRET_KEY, { expiresIn: "7d" });
     const res = NextResponse.json(
-      { data: payload, message: "Login success" },
+      { data: payload, token: token, message: "Login success" },
       { status: 200 }
     );
     res.cookies.set("token", token);

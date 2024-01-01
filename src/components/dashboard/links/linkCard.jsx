@@ -16,14 +16,14 @@ import {
 import { extractInitials } from "@/lib/string_library";
 import { API_URL } from "@/config/apiUrl";
 
-export const AgentCard = ({ id, name, phone, isActive, linkId }) => {
+export const LinkCard = ({ id, name, phone, isActive, linkId }) => {
   const router = useRouter();
 
   const [available, setAvailable] = useState(isActive);
 
   async function handleUpdate(value) {
     setAvailable(value);
-    await fetch(`${API_URL}/agents/${id}`, {
+    await fetch(`${API_URL}/links/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

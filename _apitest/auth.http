@@ -13,7 +13,7 @@ POST http://localhost:3000/api/users/register
 POST http://localhost:3000/api/users/login
 
 {
-    "email":"bintangjos@gmail.com",
+    "email":"jordan@gmail.com",
     "password": "admin123"
 }
 

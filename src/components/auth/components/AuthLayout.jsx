@@ -14,9 +14,7 @@ export const AuthLayout = ({ children }) => {
             height={393}
             className="absolute -z-10"
           />
-          <div className="font-bold text-5xl">
-            Sign In to Start Boosting Your Sales
-          </div>
+          <div className="font-bold text-5xl">Start Boosting Your Sales</div>
           <div className="font-semibold mt-8">
             Create 1 link for all your customer service agents
           </div>

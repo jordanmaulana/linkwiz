@@ -3,10 +3,8 @@ import { prisma } from "@/utils/prisma";
 import { GetUserId } from "@/lib/token_library";
 
 export async function GET(request) {
-  const token = request.cookies.get("token")?.value;
-
   try {
-    const userId = GetUserId(token);
+    const userId = GetUserId();
 
     const result = await prisma.links.findMany({
       where: {
@@ -16,7 +14,7 @@ export async function GET(request) {
         id: "asc",
       },
       include: {
-        Agents: true,
+        agents: true,
       },
     });
     return NextResponse.json(
@@ -39,10 +37,8 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const token = request.cookies.get("token")?.value;
-
   try {
-    const userId = GetUserId(token);
+    const userId = GetUserId();
     const { name, slug } = await request.json();
 
     const result = await prisma.links.create({

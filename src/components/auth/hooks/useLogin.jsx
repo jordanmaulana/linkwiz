@@ -23,9 +23,6 @@ export const useLogin = () => {
 
     const res = await fetch(`${API_URL}/users/login`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({ email, password }),
     });
     const data = await res.json();
@@ -36,12 +33,11 @@ export const useLogin = () => {
     }
 
     Cookies.set("token", data.token);
-    Cookies.set("userId", data.data.id);
+
     localStorage.setItem("userdata", JSON.stringify(data.data));
 
     setLoading(false);
-    toast.success("Login succesfully, redirecting...");
-    setTimeout(() => router.push("/dashboard"), 2000);
+    router.push("/dashboard/links");
   }
 
   return {

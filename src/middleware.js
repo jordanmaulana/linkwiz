@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import * as jose from "jose";
 
 export default async function middleware(req) {
-  const jwtSecret = process.env.JWT_SECRET;
+  const jwtSecret = process.env.SECRET_KEY;
   const encodedJwtSecret = new TextEncoder().encode(jwtSecret);
   const token = req.cookies.get("token")?.value;
 
@@ -20,5 +20,5 @@ export default async function middleware(req) {
 }
 
 export const config = {
-  matcher: "/dashboard",
+  matcher: "/dashboard/links",
 };
