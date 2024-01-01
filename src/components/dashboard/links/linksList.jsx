@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { LinkCard } from "./linkCard";
 import {
@@ -9,57 +8,37 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  User,
-  Chip,
   Tooltip,
-  getKeyValue,
+  Switch,
 } from "@nextui-org/react";
 
 import { EditIcon } from "./EditIcon";
 import { DeleteIcon } from "./DeleteIcon";
 
-import { columns, users } from "./data";
-
-const statusColorMap = {
-  active: "success",
-  paused: "danger",
-  vacation: "warning",
-};
+import { columns } from "./data";
+import { LinkCell } from "./LinkCell";
 
 export const LinksList = ({ links }) => {
-  const renderCell = React.useCallback((user, columnKey) => {
-    const cellValue = user[columnKey];
+  const renderCell = React.useCallback((link, columnKey) => {
+    const cellValue = link[columnKey];
 
     switch (columnKey) {
       case "name":
+        return <div>{link.name}</div>;
+      case "slug":
+        return <div>{link.slug}</div>;
+
+      case "agents":
+        return <div className="text-center">{link.agents.length}</div>;
+
+      case "isActive":
         return (
-          <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
-        );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-            <p className="text-bold text-sm capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        );
-      case "status":
-        return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[user.status]}
+          <Switch
             size="sm"
-            variant="flat"
-          >
-            {cellValue}
-          </Chip>
+            isSelected={link.isActive}
+            aria-label="Automatic updates"
+            // onValueChange={handleUpdate}
+          />
         );
       case "actions":
         return (
@@ -93,11 +72,14 @@ export const LinksList = ({ links }) => {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody items={users}>
+      <TableBody items={links}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
+              <TableCell>
+                {/* {renderCell(item, columnKey)} */}
+                <LinkCell data={item} column={columnKey} />
+              </TableCell>
             )}
           </TableRow>
         )}

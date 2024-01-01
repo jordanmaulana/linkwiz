@@ -7,11 +7,16 @@ export default async function middleware(req) {
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url));
+    return NextResponse.redirect(new URL("/", req.url));
   }
 
   try {
     await jose.jwtVerify(token, encodedJwtSecret);
+
+    if (req.nextUrl.pathname === "/") {
+      return NextResponse.rewrite(new URL("/dashboard/links", req.url));
+    }
+
     return NextResponse.next();
   } catch (error) {
     console.log({ error });
@@ -20,5 +25,5 @@ export default async function middleware(req) {
 }
 
 export const config = {
-  matcher: "/dashboard/links",
+  matcher: ["/dashboard/:path*", "/"],
 };

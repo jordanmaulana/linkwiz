@@ -6,7 +6,6 @@ import { useState } from "react";
 import React from "react";
 import { MoreHorizontal } from "lucide-react";
 import {
-  Avatar,
   Switch,
   Dropdown,
   DropdownTrigger,
