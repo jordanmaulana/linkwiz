@@ -9,22 +9,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Footer } from "../shared-ui/Footer";
-import Link from "next/link";
+import { Header } from "../shared-ui/Header";
 
 export const LandingPage = () => {
   return (
     <main>
-      <header className="max-w-7xl m-auto flex justify-between mt-4 ">
-        <div className="font-bold text-2xl">LinkWiz</div>
-        <div className="flex gap-8 items-center">
-          <Link href="/login">Login</Link>
-          <Link href="/register">
-            <div className="bg-primary px-4 py-2 rounded-lg text-white">
-              Sign Up
-            </div>
-          </Link>
-        </div>
-      </header>
+      <Header />
       <section className="flex items-center gap-16 max-w-7xl m-auto">
         <div>
           <h1 className="font-bold text-7xl text-dark max-w-xl">
