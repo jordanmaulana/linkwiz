@@ -3,21 +3,22 @@
 import { GreenButton } from "@/components/shared-ui/GreenButton";
 import { Button, Input } from "@nextui-org/react";
 import React from "react";
+import Link from "next/link";
+
+import { useRegister } from "../hooks/useRegister";
+import Image from "next/image";
+
+import { Eye, EyeOff } from "lucide-react";
 
 export const Register = () => {
-  async function handleRegister(event) {
-    event.preventDefault();
-    const fullName = event.target.fullName.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      BODY: JSON.stringify({ fullName, email, password }),
-    });
-    const data = await res.json();
-    console.log(data);
-  }
+  const {
+    loading,
+    handleSubmitRegister,
+    togglePasswordVisibility,
+    isPasswordVisible,
+    isRetypeVisible,
+    toggleRetypeVisibility,
+  } = useRegister();
 
   return (
     <main className="space-y-3 p-16 rounded-lg flex flex-col shadow-xl ">
@@ -32,29 +33,14 @@ export const Register = () => {
         </div>
       </div>
       <h1 className="text-lg font-semibold">Register</h1>
-      <form onSubmit={handleRegister}>
-        <section>
-          <Input name="fullName" placeholder="Full Name" />
-          <Input name="email" placeholder="Email" />
-          <Input name="password" placeholder="Password" type="password" />
-          <Button type="submit">Register</Button>
-          <Input
-            name="name"
-            label="Name"
-            onChange={handleChange}
-            className="w-72"
-          />
-          <Input
-            name="email"
-            label="Email Address"
-            onChange={handleChange}
-            className="w-72"
-          />
+      <form onSubmit={handleSubmitRegister}>
+        <section className="space-y-3 ">
+          <Input name="name" label="Full Name" className="w-72" />
+          <Input name="email" label="Email Address" className="w-72" />
           <Input
             name="password"
             label="Password"
             type={isPasswordVisible ? "text" : "password"}
-            onChange={handleChange}
             className="w-72"
             endContent={
               <button
@@ -70,7 +56,6 @@ export const Register = () => {
             name="passwordConfirmation"
             label="Password Confirmation"
             type={isRetypeVisible ? "text" : "password"}
-            onChange={handleChange}
             className="w-72"
             endContent={
               <button
@@ -88,13 +73,13 @@ export const Register = () => {
             type="submit"
             className="mt-16"
             isDisabled={loading}
-            clicked={() => {
-              handleSubmitRegister((success) => {
-                if (success) {
-                  router.replace("/login");
-                }
-              });
-            }}
+            // clicked={() => {
+            //   handleSubmitRegister((success) => {
+            //     if (success) {
+            //       router.replace("/login");
+            //     }
+            //   });
+            // }}
             title={"Register"}
             loading={loading}
           />

@@ -1,16 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { REGISTER_URL } from "@/config/apiUrl";
+import { API_URL } from "@/config/apiUrl";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export const useRegister = () => {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
-  const [registerData, setRegisterData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const togglePasswordVisibility = () =>
@@ -19,19 +17,20 @@ export const useRegister = () => {
   const [isRetypeVisible, setIsRetypeVisible] = useState(false);
   const toggleRetypeVisibility = () => setIsRetypeVisible(!isRetypeVisible);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setRegisterData({ ...registerData, [name]: value });
-  }
+  async function handleSubmitRegister(event) {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const passwordConfirmation = event.target.passwordConfirmation.value;
 
-  async function handleSubmitRegister(callback) {
-    const { name, email, password, retypepassword } = registerData;
     let error = "";
 
     if (!name) error += "Name must not be empty\n";
     if (!email) error += "Email must not be empty\n";
     if (!password) error += "Password must not be empty\n";
-    if (retypepassword !== password) error += "Password fields didn't match";
+    if (passwordConfirmation !== password)
+      error += "Password fields didn't match";
 
     if (error) {
       alert(error);
@@ -40,7 +39,7 @@ export const useRegister = () => {
 
     setLoading(true);
 
-    const res = await fetch(REGISTER_URL, {
+    const res = await fetch(`${API_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,22 +47,20 @@ export const useRegister = () => {
       body: JSON.stringify({ name, email, password }),
     });
     const data = await res.json();
-
-    if (!data) {
+    if (res.status !== 201) {
       setLoading(false);
-      toast.error("Error registering!");
+      toast.error(data.message);
       return;
     }
 
     setLoading(false);
 
     toast.success("User registered, please login...");
-    callback(true);
+    router.replace("/login");
   }
 
   return {
     loading,
-    handleChange,
     handleSubmitRegister,
     togglePasswordVisibility,
     isPasswordVisible,
