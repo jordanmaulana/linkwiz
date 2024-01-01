@@ -1,2 +1,0 @@
--- AddForeignKey
-ALTER TABLE "Agents" ADD CONSTRAINT "Agents_linkId_fkey" FOREIGN KEY ("linkId") REFERENCES "Links"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

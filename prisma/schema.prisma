@@ -19,8 +19,8 @@ model Users {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Links     Links[]
-  Agents    Agents[]
+  links     Links[]
+  agents    Agents[]
 }
 
 model Links {
@@ -29,7 +29,7 @@ model Links {
   slug     String   @unique
   isActive Boolean  @default(true)
   userId   String
-  Agents   Agents[]
+  agents   Agents[]
   user     Users    @relation(fields: [userId], references: [id])
 }
 
