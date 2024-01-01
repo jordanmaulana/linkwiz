@@ -1,12 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import { Activity, Box, Receipt } from "lucide-react";
+import { Activity, UsersRoundIcon } from "lucide-react";
+import Image from "next/image";
 
 export const DashboardTemplate = ({ children }) => {
   return (
     <main className="flex h-screen">
       <aside className="w-[230px] border-r-2 p-8 flex flex-col justify-between">
         <div>
+          <Image src="/logo.png" width={342} height={103} />
+
           <Link
             className="menu flex gap-4 items-center my-4"
             href="/dashboard/links"
@@ -18,15 +21,13 @@ export const DashboardTemplate = ({ children }) => {
             className="menu flex gap-4 items-center my-4"
             href="/dashboard/agents"
           >
-            <Box size={15} />
+            <UsersRoundIcon size={15} />
             Agents
           </Link>
         </div>
         <div className="menu">Logout</div>
       </aside>
-      <section className="w-[calc(100vw-230px)] p-8">
-        <div className="max-w-5xl m-auto">{children}</div>
-      </section>
+      <section className="p-8">{children}</section>
     </main>
   );
 };

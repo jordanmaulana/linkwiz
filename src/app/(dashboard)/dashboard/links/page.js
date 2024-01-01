@@ -18,10 +18,5 @@ async function getData() {
 export default async function Page() {
   const { data } = await getData();
 
-  return (
-    <section className="flex">
-      <LinksList agents={data} />
-      <aside className="w-[230px] border-r-2 p-8 flex flex-col justify-between"></aside>
-    </section>
-  );
+  return <LinksList links={data} />;
 }
