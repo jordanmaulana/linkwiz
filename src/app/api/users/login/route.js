@@ -16,10 +16,7 @@ export async function POST(req) {
 
     // Jika user tidak ditemukan, kirim pesan error
     if (!findUser) {
-      return NextResponse.json(
-        { errorMessage: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
     // Bandingkan password yang diinput dengan password di database

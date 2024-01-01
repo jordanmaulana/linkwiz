@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
 
-export const AuthLayout = ({children}) => {
+export const AuthLayout = ({ children }) => {
   return (
-    <main>
-        <section></section>
+    <main className="h-screen grid grid-cols-1 lg:grid-cols-2 ">
+      <section></section>
+      <div className="flex justify-center items-center">
         <section>{children}</section>
+      </div>{" "}
     </main>
-  )
-}
+  );
+};
