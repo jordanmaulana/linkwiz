@@ -40,7 +40,15 @@ export const AgentCell = ({ data, column }) => {
     case "name":
       return <div className="w-32">{data.name}</div>;
     case "phone":
-      return <div className="w-32">{data.phone}</div>;
+      return (
+        <a
+          className="w-32"
+          href={`https://wa.me/${data.phone}`}
+          target="_blank"
+        >
+          {data.phone}
+        </a>
+      );
 
     case "isActive":
       return (
