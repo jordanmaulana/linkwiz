@@ -22,7 +22,7 @@ model Users {
 
 model Agents {
   id       String  @id @default(uuid())
-  name     String
+  name     String 
   phone    String  @unique
   isActive Boolean @default(true)
   linkId   String
@@ -32,7 +32,7 @@ model Agents {
 model Links {
   id      String @id @default(uuid())
   name    String
-  url     String
+  url     String @unique
   is_active Boolean @default(true)
   user_id String
 }
