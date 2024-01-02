@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import { useRouter } from "next/navigation";
@@ -9,14 +10,14 @@ import { API_URL } from "@/config/apiUrl";
 import { EditIcon } from "../../shared-ui/EditIcon";
 import { DeleteIcon } from "../../shared-ui/DeleteIcon";
 
-export const LinkCell = ({ data, column }) => {
+export const AgentCell = ({ data, column }) => {
   const router = useRouter();
 
   const [available, setAvailable] = useState(data.isActive);
 
   async function handleUpdate(value) {
     setAvailable(value);
-    await fetch(`${API_URL}/links/${data.id}`, {
+    await fetch(`${API_URL}/agents/${data.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +28,7 @@ export const LinkCell = ({ data, column }) => {
   }
 
   async function handleDelete() {
-    await fetch(`${API_URL}/links/${data.id}`, {
+    await fetch(`${API_URL}/agents/${data.id}`, {
       method: "DELETE",
     });
     router.refresh();
