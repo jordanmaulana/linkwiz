@@ -15,8 +15,22 @@ async function getData() {
   return data;
 }
 
+async function getLinks() {
+  const res = await fetch(`${API_URL}/links`, {
+    cache: "no-store",
+    headers: {
+      authorization: `Bearer ${cookies().get("token").value}`,
+    },
+  });
+
+  const data = await res.json();
+
+  return data;
+}
+
 export default async function Page() {
   const { data } = await getData();
+  const links = await getLinks();
 
-  return <AgentsList agents={data} />;
+  return <AgentsList agents={data} links={links.data} />;
 }

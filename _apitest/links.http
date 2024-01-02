@@ -10,7 +10,7 @@ POST http://localhost:3000/api/links
 ### Get user's links
 
 GET http://localhost:3000/api/links
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5MzE4NTkxLWJlOTEtNDc3Mi05Y2VjLTA2MGZmZGQ4OTMxZiIsIm5hbWUiOiJKb3JkYW4gTWF1bGFuYSIsImVtYWlsIjoiam9yZGFuQGdtYWlsLmNvbSIsImlhdCI6MTcwNDE4MDE4NCwiZXhwIjoxNzA0Nzg0OTg0fQ.ly6YSaEYNzJv9BFL5B6NlMAA7HBKQpx6H87B_F6Nqgw
 
 ### Get single links
 

@@ -1,19 +1,13 @@
 "use client";
 import React from "react";
 import { GreenButton } from "@/components/shared-ui/GreenButton";
-import {
-  Input,
-  Dropdown,
-  DropdownTrigger,
-  DropdownItem,
-  DropdownMenu,
-} from "@nextui-org/react";
+import { Input, Select, SelectItem } from "@nextui-org/react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { API_URL } from "@/config/apiUrl";
 
-export const CreateAgent = () => {
+export const CreateAgent = ({ links }) => {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -22,7 +16,8 @@ export const CreateAgent = () => {
     event.preventDefault();
 
     const name = event.target.name.value;
-    const slug = event.target.slug.value;
+    const phone = event.target.phone.value;
+    const link = event.target.link.value;
 
     setLoading(true);
     await fetch(`${API_URL}/agents`, {
@@ -31,7 +26,7 @@ export const CreateAgent = () => {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({ name, slug }),
+      body: JSON.stringify({ name, phone, linkId: link }),
     });
     setLoading(false);
     event.target.reset();
@@ -46,6 +41,21 @@ export const CreateAgent = () => {
         <section className="space-y-3">
           <Input name="name" label="Link Name" className="w-72" />
           <Input name="phone" label="Phone" className="w-72" />
+
+          <Select
+            isRequired
+            label="Link"
+            placeholder="Select a Link"
+            className="max-w-xs"
+            name="link"
+          >
+            {links?.map((link) => (
+              <SelectItem key={link.id} value={link.id}>
+                {link.slug}
+              </SelectItem>
+            ))}
+          </Select>
+
           <div className="mt-8" />
           <GreenButton
             type="submit"

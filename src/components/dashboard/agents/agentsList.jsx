@@ -12,12 +12,11 @@ import {
 } from "@nextui-org/react";
 import { CreateAgent } from "./CreateAgent";
 
-export const AgentsList = ({ agents }) => {
+export const AgentsList = ({ agents, links }) => {
   const columns = [
     { name: "NAME", uid: "name" },
     { name: "PHONE", uid: "phone" },
     { name: "STATUS", uid: "isActive" },
-
     { name: "ACTIONS", uid: "actions" },
   ];
 
@@ -48,7 +47,7 @@ export const AgentsList = ({ agents }) => {
         </TableBody>
       </Table>
       <div className="absolute bottom-16 right-16">
-        <CreateAgent />
+        <CreateAgent links={links} />
       </div>
     </div>
   );
