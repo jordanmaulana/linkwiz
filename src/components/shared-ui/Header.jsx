@@ -8,7 +8,7 @@ export const Header = () => {
         LinkWiz
       </a>
       <div className="flex gap-8 items-center">
-        <Link href="/dashboard/links">Login</Link>
+        <Link href="/login">Login</Link>
         <Link href="/register">
           <div className="bg-primary px-4 py-2 rounded-lg text-white">
             Sign Up
