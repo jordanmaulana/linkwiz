@@ -1,6 +1,6 @@
 import React from "react";
 import { API_URL } from "@/config/apiUrl";
-import { LinksList } from "@/components/dashboard/links/linksList";
+import { LinksList } from "@/components/dashboard/links/components/linksList";
 import { cookies } from "next/headers";
 
 async function getData() {

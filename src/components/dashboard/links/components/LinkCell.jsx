@@ -6,8 +6,8 @@ import { useState } from "react";
 import { Switch, Tooltip } from "@nextui-org/react";
 import { API_URL } from "@/config/apiUrl";
 
-import { EditIcon } from "../../shared-ui/EditIcon";
-import { DeleteIcon } from "../../shared-ui/DeleteIcon";
+import { EditIcon } from "../../../shared-ui/EditIcon";
+import { DeleteIcon } from "../../../shared-ui/DeleteIcon";
 
 export const LinkCell = ({ data, column }) => {
   const router = useRouter();
@@ -56,6 +56,16 @@ export const LinkCell = ({ data, column }) => {
             />
           </span>
         </Tooltip>
+      );
+    case "link":
+      return (
+        <a
+          href={`https://linkwiz.vercel.app/${data.slug}`}
+          target="_blank"
+          className="text-blue-500 underline"
+        >
+          https://linkwiz.vercel.app/{data.slug}
+        </a>
       );
     case "actions":
       return (

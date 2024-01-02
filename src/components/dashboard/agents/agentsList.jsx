@@ -10,6 +10,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
+import { CreateAgent } from "./CreateAgent";
 
 export const AgentsList = ({ agents }) => {
   const columns = [
@@ -21,9 +22,9 @@ export const AgentsList = ({ agents }) => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative h-full">
       <h1 className="font-bold text-xl my-3">Agents Management</h1>
-      <Table aria-label="Manage agents">
+      <Table aria-label="Manage agents" className="max-w-5xl">
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn
@@ -46,6 +47,9 @@ export const AgentsList = ({ agents }) => {
           )}
         </TableBody>
       </Table>
+      <div className="absolute bottom-16 right-16">
+        <CreateAgent />
+      </div>
     </div>
   );
 };

@@ -13,6 +13,9 @@ export async function GET(request) {
       orderBy: {
         name: "asc",
       },
+      include: {
+        link: true,
+      },
     });
     return NextResponse.json(
       {

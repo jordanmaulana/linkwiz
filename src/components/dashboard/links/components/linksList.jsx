@@ -18,6 +18,8 @@ export const LinksList = ({ links }) => {
     { name: "NAME", uid: "name" },
     { name: "SLUG", uid: "slug" },
     { name: "TOTAL AGENTS", uid: "agents" },
+    { name: "YOUR LINK", uid: "link" },
+
     { name: "STATUS", uid: "isActive" },
     { name: "ACTIONS", uid: "actions" },
   ];
