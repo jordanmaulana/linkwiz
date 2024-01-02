@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 
 import { LinkCell } from "./LinkCell";
+import { CreateLink } from "./CreateLink";
 
 export const LinksList = ({ links }) => {
   const columns = [
@@ -22,9 +23,9 @@ export const LinksList = ({ links }) => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative h-full">
       <h1 className="font-bold text-xl my-3">Links Management</h1>
-      <Table aria-label="Manage links">
+      <Table aria-label="Manage links" className="max-w-5xl">
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn
@@ -47,6 +48,9 @@ export const LinksList = ({ links }) => {
           )}
         </TableBody>
       </Table>
+      <div className="absolute bottom-16 right-16">
+        <CreateLink />
+      </div>
     </div>
   );
 };

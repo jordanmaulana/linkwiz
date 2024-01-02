@@ -33,8 +33,8 @@ export const useLogin = () => {
     }
 
     Cookies.set("token", data.token);
-
-    localStorage.setItem("userdata", JSON.stringify(data.data));
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", JSON.stringify(data.data.id));
 
     setLoading(false);
     router.push("/dashboard/links");

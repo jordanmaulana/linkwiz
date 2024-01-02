@@ -12,6 +12,8 @@ export const DashboardTemplate = ({ children }) => {
 
   async function handleSubmitLogout() {
     Cookies.remove("token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
 
     let valToken = Cookies.get("token");
 
@@ -49,7 +51,7 @@ export const DashboardTemplate = ({ children }) => {
           Logout
         </div>
       </aside>
-      <section className="p-8">{children}</section>
+      <section className="p-8 w-full">{children}</section>
     </main>
   );
 };
