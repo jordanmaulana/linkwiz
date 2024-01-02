@@ -37,8 +37,8 @@ export const CreateLink = () => {
       <h2>Quick Add Link ⚡</h2>
       <form onSubmit={handleCreateLink}>
         <section className="space-y-3">
-          <Input name="name" label="Link Name" className="w-72" />
-          <Input name="slug" label="Slug" className="w-72" />
+          <Input isRequired name="name" label="Link Name" className="w-72" />
+          <Input isRequired name="slug" label="Slug" className="w-72" />
           <div className="mt-8" />
           <GreenButton
             type="submit"
