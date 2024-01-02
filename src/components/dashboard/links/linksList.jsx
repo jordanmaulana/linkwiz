@@ -16,8 +16,8 @@ export const LinksList = ({ links }) => {
   const columns = [
     { name: "NAME", uid: "name" },
     { name: "SLUG", uid: "slug" },
-    { name: "STATUS", uid: "isActive" },
     { name: "TOTAL AGENTS", uid: "agents" },
+    { name: "STATUS", uid: "isActive" },
     { name: "ACTIONS", uid: "actions" },
   ];
 

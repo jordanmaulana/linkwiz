@@ -37,21 +37,25 @@ export const LinkCell = ({ data, column }) => {
 
   switch (column) {
     case "name":
-      return <div>{data.name}</div>;
+      return <div className="w-32">{data.name}</div>;
     case "slug":
-      return <div>{data.slug}</div>;
+      return <div className="w-32">{data.slug}</div>;
 
     case "agents":
       return <div className="text-center">{data.agents.length}</div>;
 
     case "isActive":
       return (
-        <Switch
-          isSelected={available}
-          size="sm"
-          aria-label="Automatic updates"
-          onValueChange={handleUpdate}
-        />
+        <Tooltip content="Change Availability">
+          <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+            <Switch
+              isSelected={available}
+              size="sm"
+              aria-label="Automatic updates"
+              onValueChange={handleUpdate}
+            />
+          </span>
+        </Tooltip>
       );
     case "actions":
       return (
