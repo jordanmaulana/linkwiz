@@ -60,11 +60,11 @@ export const LinkCell = ({ data, column }) => {
     case "link":
       return (
         <a
-          href={`https://linkwiz.vercel.app/${data.slug}`}
+          href={`http://localhost:3000/${data.slug}`}
           target="_blank"
           className="text-blue-500 underline"
         >
-          https://linkwiz.vercel.app/{data.slug}
+          http://localhost:3000/{data.slug}
         </a>
       );
     case "actions":
