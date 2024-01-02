@@ -18,7 +18,7 @@ export const LandingPage = () => {
       <section className="flex items-center gap-16 max-w-7xl m-auto">
         <div>
           <h1 className="font-bold text-7xl text-dark max-w-xl">
-            We're here to Increase your Productivity
+            We're here to increase your productivity
           </h1>
           <Image
             src="/green_line.svg"

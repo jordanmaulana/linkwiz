@@ -1,9 +1,29 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Activity, UsersRoundIcon } from "lucide-react";
 import Image from "next/image";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export const DashboardTemplate = ({ children }) => {
+  const router = useRouter();
+
+  async function handleSubmitLogout() {
+    Cookies.remove("token");
+
+    let valToken = Cookies.get("token");
+
+    if (valToken) {
+      toast.error("Error logout!");
+      return;
+    }
+
+    toast.success("Logout succesfully, redirecting...");
+    setTimeout(() => router.push("/"), 2000);
+  }
+
   return (
     <main className="flex h-screen">
       <aside className="w-[230px] border-r-2 p-8 flex flex-col justify-between">
@@ -25,7 +45,9 @@ export const DashboardTemplate = ({ children }) => {
             Agents
           </Link>
         </div>
-        <div className="menu">Logout</div>
+        <div className="menu hover:cursor-pointer" onClick={handleSubmitLogout}>
+          Logout
+        </div>
       </aside>
       <section className="p-8">{children}</section>
     </main>
