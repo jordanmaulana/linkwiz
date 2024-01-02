@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 export default async function Page({ params }) {
   //const id = params.id;
+  //localhost:3000/api/link/fb-ads
 
   const findLink = await prisma.links.findUnique({
     where: {
@@ -22,7 +23,7 @@ export default async function Page({ params }) {
 
   console.log(`id: `, findLink.id);
 
-  const wa = await prisma.agents.findUnique({
+  const wa = await prisma.agents.firstWhere({
     where: {
       id: "9f715a77-30a8-4139-8eeb-79820d0d7ffe",
     },
