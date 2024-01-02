@@ -11,7 +11,7 @@ export async function GET(request) {
         userId: userId,
       },
       orderBy: {
-        id: "asc",
+        name: "asc",
       },
       include: {
         agents: true,

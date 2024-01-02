@@ -27,6 +27,8 @@ export const CreateLink = () => {
       body: JSON.stringify({ name, slug }),
     });
     setLoading(false);
+    event.target.reset();
+
     router.refresh();
   }
 
