@@ -38,7 +38,6 @@ export const LinksList = ({ links }) => {
           <TableRow key={item.id}>
             {(columnKey) => (
               <TableCell>
-                {/* {renderCell(item, columnKey)} */}
                 <LinkCell data={item} column={columnKey} />
               </TableCell>
             )}

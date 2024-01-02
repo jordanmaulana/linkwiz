@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { AgentCard } from "./agentCard";
 import { AgentCell } from "./AgentCell";
 import {
   Table,
@@ -38,7 +37,6 @@ export const AgentsList = ({ agents }) => {
           <TableRow key={item.id}>
             {(columnKey) => (
               <TableCell>
-                {/* {renderCell(item, columnKey)} */}
                 <AgentCell data={item} column={columnKey} />
               </TableCell>
             )}
