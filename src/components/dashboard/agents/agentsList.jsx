@@ -17,6 +17,7 @@ export const AgentsList = ({ agents, links }) => {
     { name: "NAME", uid: "name" },
     { name: "PHONE", uid: "phone" },
     { name: "STATUS", uid: "isActive" },
+    { name: "LINK", uid: "link" },
     { name: "ACTIONS", uid: "actions" },
   ];
 

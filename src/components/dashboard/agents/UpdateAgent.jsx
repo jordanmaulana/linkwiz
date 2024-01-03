@@ -32,7 +32,7 @@ export const UpdateAgent = ({ data, links }) => {
     setLoading(false);
     event.target.reset();
 
-    router.refresh();
+    router.push("/dashboard/agents");
   }
 
   return (

@@ -50,6 +50,8 @@ export const AgentCell = ({ data, column }) => {
           {data.phone}
         </a>
       );
+    case "link":
+      return <div className="w-32">{data.link?.slug}</div>;
 
     case "isActive":
       return (
