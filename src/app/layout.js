@@ -6,8 +6,8 @@ import "@/styles/globals.css";
 const fontSans = FontSans({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Digicommerce - devscale indonesia",
-  description: "Batch 3 Demo",
+  title: "Linkwiz",
+  description: "Your 1 stop sales campaign",
 };
 
 export default function RootLayout({ children }) {

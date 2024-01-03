@@ -1,7 +1,6 @@
 "use client";
-
 import React from "react";
-import { AgentCell } from "./AgentCell";
+
 import {
   Table,
   TableHeader,
@@ -10,20 +9,25 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
-import { CreateAgent } from "./CreateAgent";
 
-export const AgentsList = ({ agents, links }) => {
+import { LinkCell } from "./LinkCell";
+import { CreateLink } from "./CreateLink";
+
+export const LinksList = ({ links }) => {
   const columns = [
     { name: "NAME", uid: "name" },
-    { name: "PHONE", uid: "phone" },
+    { name: "SLUG", uid: "slug" },
+    { name: "TOTAL AGENTS", uid: "agents" },
+    { name: "YOUR LINK", uid: "link" },
+
     { name: "STATUS", uid: "isActive" },
     { name: "ACTIONS", uid: "actions" },
   ];
 
   return (
     <div className="space-y-6 relative h-full">
-      <h1 className="font-bold text-xl my-3">Agents Management</h1>
-      <Table aria-label="Manage agents" className="max-w-5xl">
+      <h1 className="font-bold text-xl my-3">Links Management</h1>
+      <Table aria-label="Manage links" className="max-w-5xl">
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn
@@ -34,12 +38,12 @@ export const AgentsList = ({ agents, links }) => {
             </TableColumn>
           )}
         </TableHeader>
-        <TableBody items={agents}>
+        <TableBody items={links}>
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (
                 <TableCell>
-                  <AgentCell data={item} column={columnKey} />
+                  <LinkCell data={item} column={columnKey} />
                 </TableCell>
               )}
             </TableRow>
@@ -47,7 +51,7 @@ export const AgentsList = ({ agents, links }) => {
         </TableBody>
       </Table>
       <div className="absolute bottom-16 right-16">
-        <CreateAgent links={links} />
+        <CreateLink />
       </div>
     </div>
   );

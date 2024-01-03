@@ -19,27 +19,50 @@ model Users {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Links     Links[]
-  Agents    Agents[]
+  links     Links[]
+  agents    Agents[]
 }
 
 model Links {
-  id       String   @id @default(uuid())
-  name     String
-  slug     String   @unique
-  isActive Boolean  @default(true)
-  userId   String
-  Agents   Agents[]
-  user     Users    @relation(fields: [userId], references: [id])
+  id          String        @id @default(uuid())
+  name        String
+  slug        String        @unique
+  isActive    Boolean       @default(true)
+  userId      String
+  agents      Agents[]
+  user        Users         @relation(fields: [userId], references: [id])
+  leadBuffers LeadBuffers[]
+  leads       Leads[]
 }
 
 model Agents {
-  id       String  @id @default(uuid())
-  name     String
-  phone    String  @unique
-  isActive Boolean @default(true)
-  linkId   String
-  userId   String
-  link     Links   @relation(fields: [linkId], references: [id])
-  user     Users   @relation(fields: [userId], references: [id])
+  id          String        @id @default(uuid())
+  name        String
+  phone       String        @unique
+  isActive    Boolean       @default(true)
+  linkId      String
+  userId      String
+  link        Links         @relation(fields: [linkId], references: [id])
+  user        Users         @relation(fields: [userId], references: [id])
+  leadBuffers LeadBuffers[]
+  leads       Leads[]
+}
+
+model LeadBuffers {
+  id      String   @id @default(uuid())
+  total   Int      @default(0)
+  date    DateTime @default(now())
+  agentId String   @unique
+  linkId  String
+  agent   Agents   @relation(fields: [agentId], references: [id])
+  link    Links    @relation(fields: [linkId], references: [id])
+}
+
+model Leads {
+  id      String   @id @default(uuid())
+  date    DateTime @default(now())
+  agentId String
+  linkId  String
+  agent   Agents   @relation(fields: [agentId], references: [id])
+  link    Links    @relation(fields: [linkId], references: [id])
 }
