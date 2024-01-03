@@ -9,6 +9,7 @@ import { API_URL } from "@/config/apiUrl";
 
 import { EditIcon } from "../../shared-ui/EditIcon";
 import { DeleteIcon } from "../../shared-ui/DeleteIcon";
+import Link from "next/link";
 
 export const AgentCell = ({ data, column }) => {
   const router = useRouter();
@@ -66,12 +67,14 @@ export const AgentCell = ({ data, column }) => {
     case "actions":
       return (
         <div className="relative flex items-center gap-2">
-          <Tooltip content="Edit link">
+          <Tooltip content="Edit agent">
             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-              <EditIcon />
+              <Link href={`/dashboard/agents/${data.id}`}>
+                <EditIcon />
+              </Link>
             </span>
           </Tooltip>
-          <Tooltip color="danger" content="Delete link">
+          <Tooltip color="danger" content="Delete agent">
             <span className="text-lg text-danger cursor-pointer active:opacity-50">
               <div onClick={handleDelete}>
                 <DeleteIcon />
