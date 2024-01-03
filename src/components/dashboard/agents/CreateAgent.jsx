@@ -39,7 +39,7 @@ export const CreateAgent = ({ links }) => {
       <h2>Quick Add Agent ⚡</h2>
       <form onSubmit={handleCreateAgent}>
         <section className="space-y-3">
-          <Input isRequired name="name" label="Link Name" className="w-72" />
+          <Input isRequired name="name" label="Name" className="w-72" />
           <Input isRequired name="phone" label="Phone" className="w-72" />
 
           <Select
