@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Switch, Tooltip } from "@nextui-org/react";
-import { API_URL } from "@/config/apiUrl";
+import { API_URL, BASE_URL } from "@/config/apiUrl";
 
 import { EditIcon } from "../../../shared-ui/EditIcon";
 import { DeleteIcon } from "../../../shared-ui/DeleteIcon";
@@ -60,11 +60,11 @@ export const LinkCell = ({ data, column }) => {
     case "link":
       return (
         <a
-          href={`http://localhost:3000/${data.slug}`}
+          href={`${BASE_URL}/${data.slug}`}
           target="_blank"
           className="text-blue-500 underline"
         >
-          http://localhost:3000/{data.slug}
+          {BASE_URL}/{data.slug}
         </a>
       );
     case "actions":
