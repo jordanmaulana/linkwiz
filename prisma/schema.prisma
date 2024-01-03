@@ -52,7 +52,7 @@ model LeadBuffers {
   id      String   @id @default(uuid())
   total   Int      @default(0)
   date    DateTime @default(now())
-  agentId String
+  agentId String   @unique
   linkId  String
   agent   Agents   @relation(fields: [agentId], references: [id])
   link    Links    @relation(fields: [linkId], references: [id])
@@ -60,7 +60,6 @@ model LeadBuffers {
 
 model Leads {
   id      String   @id @default(uuid())
-  total   Int      @default(0)
   date    DateTime @default(now())
   agentId String
   linkId  String
