@@ -8,6 +8,7 @@ import { API_URL, BASE_URL } from "@/config/apiUrl";
 
 import { EditIcon } from "../../../shared-ui/EditIcon";
 import { DeleteIcon } from "../../../shared-ui/DeleteIcon";
+import Link from "next/link";
 
 export const LinkCell = ({ data, column }) => {
   const router = useRouter();
@@ -72,7 +73,9 @@ export const LinkCell = ({ data, column }) => {
         <div className="relative flex items-center gap-2">
           <Tooltip content="Edit link">
             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-              <EditIcon />
+              <Link href={`/dashboard/links/${data.id}`}>
+                <EditIcon />
+              </Link>
             </span>
           </Tooltip>
           <Tooltip color="danger" content="Delete link">

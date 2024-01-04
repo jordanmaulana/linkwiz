@@ -10,7 +10,7 @@ export async function GET(request, { params }) {
         id: params.id,
       },
       include: {
-        Agents: true,
+        agents: true,
       },
     });
     return NextResponse.json(
