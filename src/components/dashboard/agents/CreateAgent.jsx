@@ -35,20 +35,14 @@ export const CreateAgent = ({ links }) => {
   }
 
   return (
-    <div className="rounded-lg shadow-lg space-y-4 p-8">
+    <div className="rounded-lg border hover:shadow-lg transition duration-300 space-y-4 p-8">
       <h2>Quick Add Agent ⚡</h2>
       <form onSubmit={handleCreateAgent}>
         <section className="space-y-3">
           <Input isRequired name="name" label="Name" className="w-72" />
           <Input isRequired name="phone" label="Phone" className="w-72" />
 
-          <Select
-            isRequired
-            label="Link"
-            placeholder="Select a Link"
-            className="max-w-xs"
-            name="link"
-          >
+          <Select isRequired label="Link" placeholder="Select a Link" className="max-w-xs" name="link">
             {links?.map((link) => (
               <SelectItem key={link.id} value={link.id}>
                 {link.slug}
@@ -57,12 +51,7 @@ export const CreateAgent = ({ links }) => {
           </Select>
 
           <div className="mt-8" />
-          <GreenButton
-            type="submit"
-            isDisabled={loading}
-            title={"Submit"}
-            loading={loading}
-          />
+          <GreenButton type="submit" isDisabled={loading} title={"Submit"} loading={loading} />
         </section>
       </form>
     </div>

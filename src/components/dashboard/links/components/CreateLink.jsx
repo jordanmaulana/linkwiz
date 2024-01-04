@@ -33,19 +33,14 @@ export const CreateLink = () => {
   }
 
   return (
-    <div className="rounded-lg shadow-lg space-y-4 p-8">
+    <div className="rounded-lg border hover:shadow-lg transition duration-300 space-y-4 p-8">
       <h2>Quick Add Link ⚡</h2>
       <form onSubmit={handleCreateLink}>
         <section className="space-y-3">
           <Input isRequired name="name" label="Link Name" className="w-72" />
           <Input isRequired name="slug" label="Slug" className="w-72" />
           <div className="mt-8" />
-          <GreenButton
-            type="submit"
-            isDisabled={loading}
-            title={"Submit"}
-            loading={loading}
-          />
+          <GreenButton type="submit" isDisabled={loading} title={"Submit"} loading={loading} />
         </section>
       </form>
     </div>
