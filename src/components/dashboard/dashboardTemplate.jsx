@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Activity, UsersRoundIcon } from "lucide-react";
+import { Activity, UsersRoundIcon, AreaChartIcon } from "lucide-react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
@@ -45,6 +45,13 @@ export const DashboardTemplate = ({ children }) => {
           >
             <UsersRoundIcon size={15} />
             Agents
+          </Link>
+          <Link
+            className="menu flex gap-4 items-center my-4"
+            href="/dashboard/statistics"
+          >
+            <AreaChartIcon size={15} />
+            Statistics
           </Link>
         </div>
         <div className="menu hover:cursor-pointer" onClick={handleSubmitLogout}>

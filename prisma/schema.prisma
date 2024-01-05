@@ -38,11 +38,11 @@ model Links {
 model Agents {
   id          String        @id @default(uuid())
   name        String
-  phone       String        @unique
+  phone       String
   isActive    Boolean       @default(true)
-  linkId      String
+  linkId      String?
   userId      String
-  link        Links         @relation(fields: [linkId], references: [id])
+  link        Links?        @relation(fields: [linkId], references: [id])
   user        Users         @relation(fields: [userId], references: [id])
   leadBuffers LeadBuffers[]
   leads       Leads[]
