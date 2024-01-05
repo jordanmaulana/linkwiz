@@ -7,7 +7,10 @@ export default async function middleware(req) {
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url));
+    if (req.nextUrl.pathname.includes("dashboard")) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+    return NextResponse.next();
   }
 
   try {
