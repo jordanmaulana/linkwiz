@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Link from "next/link";
 import { Activity, UsersRoundIcon, AreaChartIcon } from "lucide-react";
@@ -8,10 +9,17 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Avatar } from "@nextui-org/react";
 import { extractInitials } from "@/lib/string_library";
+import { useState, useEffect } from "react";
 
 export const DashboardTemplate = ({ children }) => {
   const router = useRouter();
-  const user = JSON.parse(localStorage.getItem("user"));
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    setUser(userData);
+  }, []);
 
   async function handleSubmitLogout() {
     Cookies.remove("token");
@@ -64,8 +72,8 @@ export const DashboardTemplate = ({ children }) => {
               className="bg-green-400 text-white text-sm font-semibold"
             />
             <div>
-              {user.name}
-              <div className="text-xs">{user.email}</div>
+              {user?.name}
+              <div className="text-xs">{user?.email}</div>
             </div>
           </div>
           <div
