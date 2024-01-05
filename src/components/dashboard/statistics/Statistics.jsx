@@ -9,7 +9,7 @@ const convertToHourlyBucket = (date) => {
   const d = new Date(date);
   const hour = d.getHours();
 
-  return `${hour}:00 - ${hour + 1}:00`;
+  return `${hour}`;
 };
 
 const groupLeadsByHourlyBucket = (leads) => {
@@ -31,8 +31,17 @@ const groupLeadsByHourlyBucket = (leads) => {
 export const Statistics = ({ data }) => {
   const leadsByHourlyBucket = groupLeadsByHourlyBucket(data);
 
-  const hoursList = Object.keys(leadsByHourlyBucket);
-  const valuesList = Object.values(leadsByHourlyBucket);
+  const defaultData = {};
+  for (let i = 0; i < 24; i++) {
+    const hour = `${i.toString()}`;
+    defaultData[hour] = 0;
+  }
+
+  // Merge the original data with default data
+  const mergedData = { ...defaultData, ...leadsByHourlyBucket };
+
+  const hoursList = Object.keys(mergedData);
+  const valuesList = Object.values(mergedData);
 
   const example = {
     labels: hoursList,
