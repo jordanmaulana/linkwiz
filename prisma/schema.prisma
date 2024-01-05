@@ -21,6 +21,7 @@ model Users {
   updatedAt DateTime @updatedAt
   links     Links[]
   agents    Agents[]
+  leads     Leads[]
 }
 
 model Links {
@@ -65,4 +66,6 @@ model Leads {
   linkId  String
   agent   Agents   @relation(fields: [agentId], references: [id])
   link    Links    @relation(fields: [linkId], references: [id])
+  userId  String
+  user    Users    @relation(fields: [userId], references: [id])
 }
