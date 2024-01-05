@@ -6,9 +6,12 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { Avatar } from "@nextui-org/react";
+import { extractInitials } from "@/lib/string_library";
 
 export const DashboardTemplate = ({ children }) => {
   const router = useRouter();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   async function handleSubmitLogout() {
     Cookies.remove("token");
@@ -28,7 +31,7 @@ export const DashboardTemplate = ({ children }) => {
 
   return (
     <main className="flex h-screen">
-      <aside className="w-[230px] border-r-2 p-8 flex flex-col justify-between">
+      <aside className="w-[320px] border-r-2 p-8 flex flex-col justify-between">
         <div>
           <Image src="/logo.png" width={342} height={103} />
 
@@ -54,8 +57,23 @@ export const DashboardTemplate = ({ children }) => {
             Statistics
           </Link>
         </div>
-        <div className="menu hover:cursor-pointer" onClick={handleSubmitLogout}>
-          Logout
+        <div>
+          <div className="flex gap-4 items-center">
+            <Avatar
+              name={extractInitials(user?.name)}
+              className="bg-green-400 text-white text-sm font-semibold"
+            />
+            <div>
+              {user.name}
+              <div className="text-xs">{user.email}</div>
+            </div>
+          </div>
+          <div
+            className="menu hover:cursor-pointer mt-8"
+            onClick={handleSubmitLogout}
+          >
+            Logout
+          </div>
         </div>
       </aside>
       <section className="p-8 w-full">{children}</section>

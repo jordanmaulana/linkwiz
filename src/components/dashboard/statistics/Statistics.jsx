@@ -30,7 +30,6 @@ const groupLeadsByHourlyBucket = (leads) => {
 
 export const Statistics = ({ data }) => {
   const leadsByHourlyBucket = groupLeadsByHourlyBucket(data);
-  console.log(leadsByHourlyBucket);
 
   const hoursList = Object.keys(leadsByHourlyBucket);
   const valuesList = Object.values(leadsByHourlyBucket);

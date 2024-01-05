@@ -34,7 +34,7 @@ export const useLogin = () => {
 
     Cookies.set("token", data.token);
     localStorage.setItem("token", data.token);
-    localStorage.setItem("userId", JSON.stringify(data.data.id));
+    localStorage.setItem("user", JSON.stringify(data.data));
 
     setLoading(false);
     router.push("/dashboard/links");
