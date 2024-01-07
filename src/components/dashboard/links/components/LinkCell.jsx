@@ -9,6 +9,8 @@ import { API_URL, BASE_URL } from "@/config/apiUrl";
 import { EditIcon } from "../../../shared-ui/EditIcon";
 import { DeleteIcon } from "../../../shared-ui/DeleteIcon";
 import Link from "next/link";
+import { CopyIcon } from "lucide-react";
+import toast from "react-hot-toast";
 
 export const LinkCell = ({ data, column }) => {
   const router = useRouter();
@@ -32,6 +34,17 @@ export const LinkCell = ({ data, column }) => {
       method: "DELETE",
     });
     router.refresh();
+  }
+
+  async function copyLink() {
+    navigator.clipboard.writeText(`${BASE_URL}/${data.slug}`).then(
+      function () {
+        toast.success("Link copied");
+      },
+      function (err) {
+        toast.error("Error: Could not copy link");
+      }
+    );
   }
 
   const cellValue = data[column];
@@ -60,13 +73,18 @@ export const LinkCell = ({ data, column }) => {
       );
     case "link":
       return (
-        <a
-          href={`${BASE_URL}/${data.slug}`}
-          target="_blank"
-          className="text-blue-500 underline"
-        >
-          {BASE_URL}/{data.slug}
-        </a>
+        <div className="flex space-x-2 items-center">
+          <a
+            href={`${BASE_URL}/${data.slug}`}
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            {BASE_URL}/{data.slug}
+          </a>
+          <div className="cursor-pointer" onClick={copyLink}>
+            <CopyIcon size={12} />
+          </div>
+        </div>
       );
     case "actions":
       return (
