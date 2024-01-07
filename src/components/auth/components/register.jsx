@@ -11,25 +11,13 @@ import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 
 export const Register = () => {
-  const {
-    loading,
-    handleSubmitRegister,
-    togglePasswordVisibility,
-    isPasswordVisible,
-    isRetypeVisible,
-    toggleRetypeVisibility,
-  } = useRegister();
+  const { loading, handleSubmitRegister, togglePasswordVisibility, isPasswordVisible, isRetypeVisible, toggleRetypeVisibility } = useRegister();
 
   return (
-    <main className="space-y-3 p-16 rounded-lg flex flex-col shadow-xl ">
+    <main className="space-y-3 p-16 rounded-xl flex flex-col border">
       <div className="block lg:hidden">
         <div className="relative w-full h-[64px] ">
-          <Image
-            src="/logo.png"
-            fill
-            className="object-scale-down bg-gradient-to-br from-pink to-purple rounded-xl"
-            alt="logo"
-          />
+          <Image src="/logo.png" fill className="object-scale-down bg-gradient-to-br from-pink to-purple rounded-xl" alt="logo" />
         </div>
       </div>
       <h1 className="text-lg font-semibold">Register</h1>
@@ -43,11 +31,7 @@ export const Register = () => {
             type={isPasswordVisible ? "text" : "password"}
             className="w-72"
             endContent={
-              <button
-                className="focus:outline-none"
-                type="button"
-                onClick={togglePasswordVisibility}
-              >
+              <button className="focus:outline-none" type="button" onClick={togglePasswordVisibility}>
                 {isPasswordVisible ? <EyeOff /> : <Eye />}
               </button>
             }
@@ -58,11 +42,7 @@ export const Register = () => {
             type={isRetypeVisible ? "text" : "password"}
             className="w-72"
             endContent={
-              <button
-                className="focus:outline-none"
-                type="button"
-                onClick={toggleRetypeVisibility}
-              >
+              <button className="focus:outline-none" type="button" onClick={toggleRetypeVisibility}>
                 {isRetypeVisible ? <EyeOff /> : <Eye />}
               </button>
             }

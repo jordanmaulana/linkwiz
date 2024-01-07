@@ -26,34 +26,34 @@ export const LinksList = ({ links }) => {
 
   return (
     <div className="space-y-6 relative h-full">
-      <h1 className="font-bold text-xl my-3">Links Management</h1>
-      <React.Suspense fallback={<div>Loading....</div>}>
-        <Table aria-label="Manage links" className="max-w-5xl">
-          <TableHeader columns={columns}>
-            {(column) => (
-              <TableColumn
-                key={column.uid}
-                align={column.uid === "actions" ? "center" : "start"}
-              >
-                {column.name}
-              </TableColumn>
-            )}
-          </TableHeader>
-          <TableBody items={links}>
-            {(item) => (
-              <TableRow key={item.id}>
-                {(columnKey) => (
-                  <TableCell>
-                    <LinkCell data={item} column={columnKey} />
-                  </TableCell>
-                )}
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </React.Suspense>
-
-      <div className="absolute bottom-16 right-16">
+      <section>
+        <h1 className="font-bold text-xl">Links Management</h1>
+        <p className="text-gray-500"> Manage your links here. </p>
+      </section>
+      <Table aria-label="Manage links" shadow="sm">
+        <TableHeader columns={columns}>
+          {(column) => (
+            <TableColumn
+              key={column.uid}
+              align={column.uid === "actions" ? "center" : "start"}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody items={links}>
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => (
+                <TableCell>
+                  <LinkCell data={item} column={columnKey} />
+                </TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+      <div className="absolute bottom-8 right-0">
         <CreateLink />
       </div>
     </div>

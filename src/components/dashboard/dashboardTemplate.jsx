@@ -39,21 +39,14 @@ export const DashboardTemplate = ({ children }) => {
 
   return (
     <main className="flex h-screen">
-      <aside className="w-[320px] border-r-2 p-8 flex flex-col justify-between">
-        <div>
-          <Image src="/logo.png" width={342} height={103} />
-
-          <Link
-            className="menu flex gap-4 items-center my-4"
-            href="/dashboard/links"
-          >
+      <aside className="w-[280px] border-r bg-gray-50 p-4 flex flex-col justify-between">
+        <div className="">
+          <div className="font-bold text-lg mb-4 pl-4 pt-4">LinkWiz</div>
+          <Link className="menu flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl" href="/dashboard/links">
             <Activity size={15} />
             Links
           </Link>
-          <Link
-            className="menu flex gap-4 items-center my-4"
-            href="/dashboard/agents"
-          >
+          <Link className="menu flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl" href="/dashboard/agents">
             <UsersRoundIcon size={15} />
             Agents
           </Link>
@@ -64,7 +57,16 @@ export const DashboardTemplate = ({ children }) => {
             <AreaChartIcon size={15} />
             Statistics
           </Link>
+          <Link
+            className="menu flex gap-4 items-center my-4"
+            href="/dashboard/statistics"
+          >
+            <AreaChartIcon size={15} />
+            Statistics
+          </Link>
         </div>
+        <div className="menu cursor-pointer flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl" onClick={handleSubmitLogout}>
+          Logout
         <div>
           <div className="flex gap-4 items-center">
             <Avatar
@@ -84,7 +86,7 @@ export const DashboardTemplate = ({ children }) => {
           </div>
         </div>
       </aside>
-      <section className="p-8 w-full">{children}</section>
+      <section className="py-8 px-12 w-[calc(100vw-280px)]">{children}</section>
     </main>
   );
 };

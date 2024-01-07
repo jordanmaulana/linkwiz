@@ -24,33 +24,30 @@ export const AgentsList = ({ agents, links }) => {
   return (
     <div className="space-y-6 relative h-full">
       <h1 className="font-bold text-xl my-3">Agents Management</h1>
-      <React.Suspense fallback={<div>Loading....</div>}>
-        <Table aria-label="Manage agents" className="max-w-5xl">
-          <TableHeader columns={columns}>
-            {(column) => (
-              <TableColumn
-                key={column.uid}
-                align={column.uid === "actions" ? "center" : "start"}
-              >
-                {column.name}
-              </TableColumn>
-            )}
-          </TableHeader>
-          <TableBody items={agents}>
-            {(item) => (
-              <TableRow key={item.id}>
-                {(columnKey) => (
-                  <TableCell>
-                    <AgentCell data={item} column={columnKey} />
-                  </TableCell>
-                )}
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </React.Suspense>
-
-      <div className="absolute bottom-16 right-16">
+      <Table aria-label="Manage agents" className="max-w-5xl">
+        <TableHeader columns={columns}>
+          {(column) => (
+            <TableColumn
+              key={column.uid}
+              align={column.uid === "actions" ? "center" : "start"}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody items={agents}>
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => (
+                <TableCell>
+                  <AgentCell data={item} column={columnKey} />
+                </TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+      <div className="absolute bottom-10 right-0">
         <CreateAgent links={links} />
       </div>
     </div>
