@@ -8,7 +8,11 @@ export default async function Page({ params }) {
       slug: params.slug,
     },
     include: {
+      user: true,
       agents: {
+        where: {
+          isActive: true,
+        },
         include: {
           leadBuffers: {
             where: {
@@ -73,6 +77,7 @@ export default async function Page({ params }) {
       date: currentDate,
       agentId: agentWithLowestTotal.id,
       linkId: findLink.id,
+      userId: findLink.user.id,
     },
   });
 
