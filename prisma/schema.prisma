@@ -56,19 +56,19 @@ model LeadBuffers {
   id      String   @id @default(uuid())
   total   Int      @default(0)
   date    DateTime @default(now())
-  agentId String   @unique
-  linkId  String
-  agent   Agents   @relation(fields: [agentId], references: [id])
-  link    Links    @relation(fields: [linkId], references: [id])
+  agentId String?  @unique
+  linkId  String?
+  agent   Agents?  @relation(fields: [agentId], references: [id])
+  link    Links?   @relation(fields: [linkId], references: [id])
 }
 
 model Leads {
   id      String   @id @default(uuid())
   date    DateTime @default(now())
-  agentId String
-  linkId  String
-  agent   Agents   @relation(fields: [agentId], references: [id])
-  link    Links    @relation(fields: [linkId], references: [id])
+  agentId String?
+  linkId  String?
+  agent   Agents?  @relation(fields: [agentId], references: [id])
+  link    Links?   @relation(fields: [linkId], references: [id])
   userId  String
   user    Users    @relation(fields: [userId], references: [id])
 }

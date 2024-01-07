@@ -19,11 +19,11 @@ import { useState, useEffect } from "react";
 export const DashboardTemplate = ({ children }) => {
   const router = useRouter();
 
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
-    setUser(userData);
+    setCurrentUser(userData);
   }, []);
 
   async function handleSubmitLogout() {
@@ -73,12 +73,12 @@ export const DashboardTemplate = ({ children }) => {
         <div>
           <div className="flex gap-4 items-center">
             <Avatar
-              name={extractInitials(user?.name)}
+              name={extractInitials(currentUser?.name)}
               className="bg-green-400 text-white text-sm font-semibold"
             />
             <div>
-              {user?.name}
-              <div className="text-xs">{user?.email}</div>
+              {currentUser?.name}
+              <div className="text-xs">{currentUser?.email}</div>
             </div>
             <div
               className="cursor-pointer hover:bg-gray-100 rounded-xl p-4"
