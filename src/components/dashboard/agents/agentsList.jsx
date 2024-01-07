@@ -2,14 +2,7 @@
 
 import React from "react";
 import { AgentCell } from "./AgentCell";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
 import { CreateAgent } from "./CreateAgent";
 
 export const AgentsList = ({ agents, links }) => {
@@ -26,10 +19,7 @@ export const AgentsList = ({ agents, links }) => {
       <Table aria-label="Manage agents" className="max-w-5xl">
         <TableHeader columns={columns}>
           {(column) => (
-            <TableColumn
-              key={column.uid}
-              align={column.uid === "actions" ? "center" : "start"}
-            >
+            <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
               {column.name}
             </TableColumn>
           )}
@@ -46,7 +36,7 @@ export const AgentsList = ({ agents, links }) => {
           )}
         </TableBody>
       </Table>
-      <div className="absolute bottom-16 right-16">
+      <div className="absolute bottom-10 right-0">
         <CreateAgent links={links} />
       </div>
     </div>
