@@ -2,7 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { Activity, UsersRoundIcon, AreaChartIcon } from "lucide-react";
+import {
+  Activity,
+  UsersRoundIcon,
+  AreaChartIcon,
+  LogOutIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
@@ -75,13 +80,19 @@ export const DashboardTemplate = ({ children }) => {
               {user?.name}
               <div className="text-xs">{user?.email}</div>
             </div>
+            <div
+              className="cursor-pointer hover:bg-gray-100 rounded-xl p-4"
+              onClick={handleSubmitLogout}
+            >
+              <LogOutIcon />
+            </div>
           </div>
-          <div
-            className="menu cursor-pointer flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl mt-8"
+          {/* <div
+            className="menu cursor-pointer flex gap-4 items-center justify-end py-3 px-4 hover:bg-gray-100 rounded-xl mt-8"
             onClick={handleSubmitLogout}
           >
             Logout
-          </div>
+          </div> */}
         </div>
       </aside>
       <section className="py-8 px-12 w-[calc(100vw-280px)]">{children}</section>
