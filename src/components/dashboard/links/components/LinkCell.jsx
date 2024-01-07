@@ -73,7 +73,7 @@ export const LinkCell = ({ data, column }) => {
       );
     case "link":
       return (
-        <div className="flex space-x-2 items-center">
+        <div className="flex space-x-4 items-center">
           <a
             href={`${BASE_URL}/${data.slug}`}
             target="_blank"
@@ -82,7 +82,7 @@ export const LinkCell = ({ data, column }) => {
             {BASE_URL}/{data.slug}
           </a>
           <div className="cursor-pointer" onClick={copyLink}>
-            <CopyIcon size={12} />
+            <CopyIcon size={16} />
           </div>
         </div>
       );
