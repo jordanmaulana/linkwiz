@@ -23,8 +23,12 @@ export const AgentsList = ({ agents, links }) => {
 
   return (
     <div className="space-y-6 relative h-full">
-      <h1 className="font-bold text-xl my-3">Agents Management</h1>
-      <Table aria-label="Manage agents" className="max-w-5xl">
+      <section>
+        <h1 className="font-bold text-xl">Agents Management</h1>
+        <p className="text-gray-500"> Manage your agents here. </p>
+      </section>
+
+      <Table aria-label="Manage agents" shadow="sm">
         <TableHeader columns={columns}>
           {(column) => (
             <TableColumn
@@ -47,7 +51,7 @@ export const AgentsList = ({ agents, links }) => {
           )}
         </TableBody>
       </Table>
-      <div className="absolute bottom-10 right-0">
+      <div className="absolute bottom-8 right-0">
         <CreateAgent links={links} />
       </div>
     </div>

@@ -48,7 +48,7 @@ export const Statistics = ({ data }) => {
     datasets: [
       {
         fill: true,
-        label: "Total leads per hour",
+        label: "Click",
         data: valuesList,
         borderWidth: 1,
       },
@@ -56,7 +56,10 @@ export const Statistics = ({ data }) => {
   };
   return (
     <div>
-      <h1 className="font-bold text-xl my-3">Statistics</h1>
+      <section>
+        <h1 className="font-bold text-xl">Statistics</h1>
+        <p className="text-gray-500"> New leads traffic </p>
+      </section>
       <Line data={example} width={400} height={100} />
     </div>
   );

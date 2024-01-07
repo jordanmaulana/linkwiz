@@ -42,31 +42,29 @@ export const DashboardTemplate = ({ children }) => {
       <aside className="w-[280px] border-r bg-gray-50 p-4 flex flex-col justify-between">
         <div className="">
           <div className="font-bold text-lg mb-4 pl-4 pt-4">LinkWiz</div>
-          <Link className="menu flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl" href="/dashboard/links">
+          <Link
+            className="menu flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl"
+            href="/dashboard/links"
+          >
             <Activity size={15} />
             Links
           </Link>
-          <Link className="menu flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl" href="/dashboard/agents">
+          <Link
+            className="menu flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl"
+            href="/dashboard/agents"
+          >
             <UsersRoundIcon size={15} />
             Agents
           </Link>
           <Link
-            className="menu flex gap-4 items-center my-4"
-            href="/dashboard/statistics"
-          >
-            <AreaChartIcon size={15} />
-            Statistics
-          </Link>
-          <Link
-            className="menu flex gap-4 items-center my-4"
+            className="menu flex gap-4 items-center  py-3 px-4 hover:bg-gray-100 rounded-xl"
             href="/dashboard/statistics"
           >
             <AreaChartIcon size={15} />
             Statistics
           </Link>
         </div>
-        <div className="menu cursor-pointer flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl" onClick={handleSubmitLogout}>
-          Logout
+
         <div>
           <div className="flex gap-4 items-center">
             <Avatar
@@ -79,7 +77,7 @@ export const DashboardTemplate = ({ children }) => {
             </div>
           </div>
           <div
-            className="menu hover:cursor-pointer mt-8"
+            className="menu cursor-pointer flex gap-4 items-center py-3 px-4 hover:bg-gray-100 rounded-xl mt-8"
             onClick={handleSubmitLogout}
           >
             Logout
