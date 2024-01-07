@@ -14,14 +14,7 @@ export default async function Page({ params }) {
           isActive: true,
         },
         include: {
-          leadBuffers: {
-            where: {
-              date: {
-                gte: new Date().toISOString().split("T")[0] + "T00:00:00.000Z",
-                lte: new Date().toISOString().split("T")[0] + "T23:59:59.999Z",
-              },
-            },
-          },
+          leadBuffers: true,
         },
       },
     },
@@ -34,6 +27,8 @@ export default async function Page({ params }) {
   let lowestTotal = Infinity;
 
   for (const agent of agentsForLink) {
+    console.log("Agent:", agent);
+
     const totalLeads = agent.leadBuffers.reduce(
       (sum, buffer) => sum + buffer.total,
       0
@@ -63,6 +58,9 @@ export default async function Page({ params }) {
       total: {
         increment: 1,
       },
+      date: currentDate,
+      agentId: agentWithLowestTotal.id,
+      linkId: findLink.id,
     },
     create: {
       date: currentDate,
